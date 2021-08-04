@@ -49,4 +49,5 @@ laravel chat app build with tailwind css
 
 # Production Installation
 
-[-] composer update
+[-] composer update --no-dev
+[-] php artisan key:generate
