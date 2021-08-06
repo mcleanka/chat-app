@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('posts.index');
+    return view('welcome');
 });
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

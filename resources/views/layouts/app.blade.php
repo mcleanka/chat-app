@@ -1,40 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Posty</title>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-</head>
-<body class="bg-gray-100">
-	<nav class="p-6 bg-white flex justify-between mb-6">
-		<ul class="flex items-center">
-			<li>
-				<a href="" class="p-3">Home</a>
-			</li>
-			<li>
-				<a href="" class="p-3">Dashboard</a>
-			</li>
-			<li>
-				<a href="" class="p-3">Post</a>
-			</li>
-		</ul>
-		<ul class="flex items-center">
-			<li>
-				<a href="" class="p-3">Mclean</a>
-			</li>
-			<li>
-				<a href="" class="p-3">Login</a>
-			</li>
-			<li>
-			</li>
-			<li>
-				<a href="" class="p-3">Logout</a>
-			</li>
-		</ul>
-	</nav>
-	@yield('content')
-</body>
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100">
+            @include('layouts.navigation')
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot ?? ''}}
+            </main>
+        </div>
+    </body>
 </html>
