@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,5 +14,13 @@ Route::get('/dashboard', function () {
 
 Route::resource('posts', PostController::class)
     ->middleware('auth');
+
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes')->middleware('auth');
+Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes')->middleware('auth');
+/* Route::resource('posts.likes', PostLikeController::class)
+->scoped([
+'like' => 'slug',
+])->middleware('auth')
+->names('posts.likes'); */
 
 require __DIR__ . '/auth.php';

@@ -9,11 +9,18 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::with([
+            'user',
+            'likes',
+        ])->paginate(5);
+
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource
      *
      * @return \Illuminate\Http\Response
      */

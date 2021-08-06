@@ -16,7 +16,7 @@
 						@error('body')
 						border-red-500
 						@else
-						border-gray-200
+						border-1
 						@enderror
 						" placeholder="{{ __('Post something') }}"></textarea>
 
@@ -35,6 +35,49 @@
 					</button>
 				</div>
 			</form>
+
+			<div class="my-5">
+				@if ($posts->count())
+					@foreach ($posts as $post)
+						<div class="mb-4">
+							<a href="" class="font-bold">
+								{{ __($post->user->name) }}
+							</a>
+							<span class="text-sm text-gray-600">
+								{{ $post->created_at->diffForHumans() }}
+							</span>
+
+							<p class="mb-2">
+								{{ __($post->body) }}
+							</p>
+
+							<div class="flex items-center">
+								@auth
+									@if (!$post->likedBy(auth()->user()))
+										<form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
+											@csrf
+											<button type="submit" class="text-blue-500">Like</button>
+										</form>
+									@else
+										<form action="{{ route('posts.likes', $post) }}" method="post" class="mr-1">
+											@csrf
+											@method('DELETE')
+											<button type="submit" class="text-blue-500">Unlike</button>
+										</form>
+									@endif
+								@endauth
+
+								{{ $post->likes->count() }} {{ __(Str::plural('like', $post->likes()->count())) }}
+
+							</div>
+						</div>
+					@endforeach
+
+					{{ $posts->links() }}
+				@else
+				<p>There are no posts</p>
+				@endif
+			</div>
 
 		</div>
 	</div>
