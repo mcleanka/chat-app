@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,5 +55,10 @@ $this->attributes['username'] = $this->name;
             $username = $model['name'] . $randNum;
             $model['username'] = strtolower($username);
         });
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
