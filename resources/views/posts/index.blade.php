@@ -12,9 +12,11 @@
 						id="body"
 						cols="30"
 						rows="4"
-						class="bg-gray-100 border-1 w-full p-4 rounded-lg 
+						class="bg-gray-100 w-full p-4 rounded-lg 
 						@error('body')
 						border-red-500
+						@else
+						border-gray-200
 						@enderror
 						" placeholder="{{ __('Post something') }}"></textarea>
 
