@@ -26,7 +26,7 @@
 				@endauth
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts')">
                         {{ __('Posts') }}
                     </x-nav-link>
                 </div>
