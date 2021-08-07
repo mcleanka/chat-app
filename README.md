@@ -54,6 +54,8 @@ laravel chat app build with tailwind css
 
 # likes commands
 
+" summary
+
 php artisan make:migration create_likes_table --create=likes
 php artisan migrate
 php artisan make:model Like
