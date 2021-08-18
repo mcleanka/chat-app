@@ -59,3 +59,7 @@ laravel chat app build with tailwind css
 php artisan make:migration create_likes_table --create=likes
 php artisan migrate
 php artisan make:model Like
+
+# App activities tracker
+
+composer require pragmarx/tracker
