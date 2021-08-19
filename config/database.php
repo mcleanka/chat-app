@@ -70,7 +70,7 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'strict' => false, // to avoid problems on some MySQL installs
+            'strict' => true, // to avoid problems on some MySQL installs
         ],
         'pgsql' => [
             'driver' => 'pgsql',

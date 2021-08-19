@@ -4,11 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Tracker;
 
 class PostController extends Controller
 {
     public function index()
     {
+        $visitor = Tracker::currentSession();
+
+        // dd($visitor);
+
+        /* var_dump($visitor->device->is_mobile);
+
+        var_dump($visitor->device->platform);
+
+        var_dump($visitor->geoIp->city);
+
+        var_dump($visitor->language->preference); */
+
         $posts = Post::with([
             'user',
             'likes',
